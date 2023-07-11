@@ -53,6 +53,8 @@ jobs:
         run: bin/rails db:schema:load
       - name: Compile CSS
         run: bin/rails tailwindcss:build assets:precompile
+      - name: Display tasks
+        run: rake --tasks
       - name: Run Ruby tests
         run: bin/rake test --trace
       - name: Jest tests
