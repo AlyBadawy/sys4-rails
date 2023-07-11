@@ -72,6 +72,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    brakeman (6.0.0)
     builder (3.2.4)
     bundle-audit (0.1.0)
       bundler-audit
@@ -161,6 +162,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     overcommit (0.60.0)
       childprocess (>= 0.6.3, < 5)
@@ -298,6 +301,8 @@ GEM
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.29-arm64-darwin)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.29-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.2)
     timeout (0.4.0)
     turbo-rails (1.4.0)
@@ -326,9 +331,11 @@ GEM
 
 PLATFORMS
   arm64-darwin-23
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
+  brakeman
   bundle-audit
   capybara
   database_cleaner
