@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
-RSpec.describe "Reacts", type: :request do
+RSpec.describe "Reacts" do
   describe "GET /" do
     it "returns http success" do
       get "/app"
