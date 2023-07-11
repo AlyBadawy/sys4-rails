@@ -54,7 +54,7 @@ jobs:
       - name: Compile CSS
         run: bin/rails tailwindcss:build assets:precompile
       - name: Run Ruby tests
-        run: bin/rake
+        run: bin/rake --trace
       - name: Jest tests
         run: yarn test
       - name: Security audit dependencies
