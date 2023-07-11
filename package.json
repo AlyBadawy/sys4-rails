@@ -43,6 +43,8 @@
     "ts:check": "tsc --project tsconfig.json --noEmit",
     "ts:watch": "tsc --project tsconfig.json --noEmit --watch --preserveWatchOutput",
     "lint": "eslint --quiet --ext .ts,.tsx,.js,.jsx --no-error-on-unmatched-pattern app/javascript/**/*",
-    "lint:fix": "eslint --fix --quiet --ext .ts,.tsx,.js,.jsx --no-error-on-unmatched-pattern app/javascript/**/*"
+    "lint:fix": "eslint --fix --quiet --ext .ts,.tsx,.js,.jsx --no-error-on-unmatched-pattern app/javascript/**/*",
+    "test": "jest --silent --noStackTrace --coverage",
+    "mail": "mailcatcher --foreground"
   }
 }
