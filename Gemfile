@@ -12,9 +12,10 @@ gem "jbuilder"
 gem "jsbundling-rails"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
-gem "sassc-rails"
+gem "sassc"
 gem "sprockets-rails"
 gem "stimulus-rails"
+gem "tailwindcss-rails", "~> 2.0"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
@@ -25,6 +26,7 @@ end
 
 group :development do
   gem "bundle-audit"
+  gem "fasterer"
   gem "overcommit"
   gem "rack-mini-profiler"
   gem "rspec-rails"

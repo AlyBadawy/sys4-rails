@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>MainSys4</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sys4.dev</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reloa d" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module" %>
+    <script src="/sw.js" defer="defer" ></script>
   </head>
-
-  <body>
+  <body class="bg-gradient-to-br from-black to-cyan-950 text-white">
     <%= yield %>
   </body>
 </html>
