@@ -56,7 +56,7 @@ jobs:
       - name: Display tasks
         run: rake --tasks
       - name: Run Ruby tests
-        run: bin/rake test --trace
+        run: bin/rake --trace
       - name: Jest tests
         run: yarn test
       - name: Security audit dependencies
