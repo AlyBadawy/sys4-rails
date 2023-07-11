@@ -24,10 +24,10 @@ end
 group :development do
   gem "web-console"
   gem "rack-mini-profiler"
+  gem "rspec-rails"
 end
 
 group :test do
-  gem "rspec-rails"
   gem 'capybara'
   gem 'database_cleaner'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
