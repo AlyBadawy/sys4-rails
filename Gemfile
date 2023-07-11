@@ -20,8 +20,16 @@ gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 group :development, :test do
+  gem "capybara"
+  gem "database_cleaner"
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "dotenv-rails"
   gem "factory_bot_rails"
   gem "faker"
+  gem "pry-byebug"
+  gem "pry-rails"
+  gem "rspec-rails"
+  gem "shoulda-matchers"
 end
 
 group :development do
@@ -29,7 +37,6 @@ group :development do
   gem "fasterer"
   gem "overcommit"
   gem "rack-mini-profiler"
-  gem "rspec-rails"
   gem "rubocop"
   gem "rubocop-config-prettier"
   gem "rubocop-performance"
@@ -39,14 +46,9 @@ group :development do
 end
 
 group :test do
-  gem "capybara"
-  gem "database_cleaner"
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "dotenv-rails"
-  gem "pry-byebug"
-  gem "pry-rails"
+  gem "brakeman"
+  gem "bundle-audit"
   gem "selenium-webdriver"
-  gem "shoulda-matchers"
   gem "simplecov"
   gem "webdrivers"
 end
