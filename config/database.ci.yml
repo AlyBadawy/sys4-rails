@@ -8,5 +8,5 @@ default: &default
   password: postgres
   port: 5432
 
- test:
+test:
   <<: *default
