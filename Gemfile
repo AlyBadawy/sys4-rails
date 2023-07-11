@@ -24,6 +24,8 @@ group :development, :test do
 end
 
 group :development do
+  gem "bundle-audit"
+  gem "overcommit"
   gem "rack-mini-profiler"
   gem "rspec-rails"
   gem "rubocop"
