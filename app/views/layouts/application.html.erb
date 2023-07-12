@@ -2,8 +2,11 @@
 <html lang="en">
   <head>
     <title>Sys4.dev</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= render partial: "shared/social_meta_tags" %>
+    <%= render partial: "shared/google_fonts" %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reloa d" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module" %>

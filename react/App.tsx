@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 interface AppProps {
   arg: string;
@@ -11,5 +11,6 @@ const App = ({ arg }: AppProps) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const rootEl = document.getElementById('react-app-root');
-  ReactDOM.render(<App arg='Rails 7 with ESBuild' />, rootEl);
+  const root = createRoot(rootEl!);
+  root.render(<App arg='Rails 7 with ESBuild' />);
 });
