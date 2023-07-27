@@ -51,5 +51,4 @@ group :test do
   gem "brakeman"
   gem "selenium-webdriver"
   gem "simplecov"
-  gem "webdrivers"
 end
