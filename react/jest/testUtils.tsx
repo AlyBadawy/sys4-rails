@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import { RootState, rootReducer } from '../store/store';
 import { BrowserRouter } from 'react-router-dom';
 import { appApi } from '../store/api/appApi';
@@ -25,7 +26,10 @@ export const s4render = (
 
   return render(
     <Provider store={store}>
-      <BrowserRouter>{ui}</BrowserRouter>
+      <BrowserRouter>
+        {ui}
+        <ToastContainer />
+      </BrowserRouter>
     </Provider>
   );
 };
