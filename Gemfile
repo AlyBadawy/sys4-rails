@@ -8,6 +8,8 @@ ruby "3.2.2"
 gem "rails", "~> 7.0.6"
 
 gem "bootsnap", require: false
+gem "devise"
+gem "devise-jwt"
 gem "jbuilder"
 gem "jsbundling-rails"
 gem "pg", "~> 1.1"
