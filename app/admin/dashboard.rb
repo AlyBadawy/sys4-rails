@@ -21,7 +21,7 @@ ActiveAdmin.register_page "Dashboard" do
           if User.all.count.zero?
             div { "No Users found!" }
           else
-            table_for AdminUser.last(5) do
+            table_for Admin.last(5) do
               column :id
               column :email
             end
