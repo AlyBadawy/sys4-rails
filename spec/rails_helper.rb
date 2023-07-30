@@ -17,8 +17,10 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
 RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.fixture_path = "#{Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true

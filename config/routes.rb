@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :admins
+  devise_for :users
 
   # root "react#index"
   get "/app", to: "react#app"
