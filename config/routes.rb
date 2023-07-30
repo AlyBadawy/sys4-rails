@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :accounts
+  devise_for :admins
+
   # root "react#index"
   get "/app", to: "react#app"
   get "*path", to: "react#index"
