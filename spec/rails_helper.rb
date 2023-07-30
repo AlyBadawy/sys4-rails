@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "devise/jwt/test_helpers"
+
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 

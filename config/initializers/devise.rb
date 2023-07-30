@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '3fea20bab5bf50b029ba96659a62bc4379fb94f2e51009d17a4f61932796600e1382a0aa4da85f3a134ba8eace654d4dcdcfa5b081880a893c2302f4d2cafc1f'
+  # config.secret_key = 'b96be046a01c61cb4a96c789f73fc6ad041f24054b94c554ec528131fdc34eb213a3bccd916d7754d0da96ac7a489a15cfdbff79433437d71dfd6363023a4b99'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,19 +24,19 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = "support@sys4.dev"
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = "Devise::Mailer"
 
   # Configure the parent class responsible to send e-mails.
-  # config.parent_mailer = 'ActionMailer::Base'
+  config.parent_mailer = "ActionMailer::Base"
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'b174bc0aab4cf0f632059709976dad60c3ef0e540c76247ab0169ae8543996c8bc6eb058ef32d86c61f3e76e1e59d0b8f722c7e7316fae15d3d76723ab358fb5'
+  # config.pepper = 'd6e44153001206cfca89806a46eb59c714591f703fd0062e28013961f8c4e85ff727e6af978a7a56e69b86fd87b200327cfe4a6e7c709116390fbbd096f0d9f7'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -310,4 +310,10 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  config.jwt do |jwt|
+    jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
+    jwt.aud_header = "JWT-AUD"
+    jwt.expiration_time = 3.days
+  end
 end

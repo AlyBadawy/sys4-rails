@@ -1,7 +1,5 @@
 class Account < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable, :trackable
+  validates :email, presence: true,
+                    format: /\A\S+@\S+\z/,
+                    uniqueness: { case_sensitive: false }
 end

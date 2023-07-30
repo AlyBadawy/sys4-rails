@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_30_143854) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_151316) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -37,4 +37,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_143854) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
+  create_table "allowlisted_jwts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "jti", null: false
+    t.string "aud", null: false
+    t.datetime "exp", null: false
+    t.uuid "user_id", null: false
+    t.string "agent"
+    t.string "ip"
+    t.string "location"
+    t.string "device_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
+    t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
+  end
+
+  add_foreign_key "allowlisted_jwts", "accounts", column: "user_id", on_delete: :cascade
 end
