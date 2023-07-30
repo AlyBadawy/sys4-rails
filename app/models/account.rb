@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Account < ApplicationRecord
   validates :email, presence: true,
                     format: /\A\S+@\S+\z/,

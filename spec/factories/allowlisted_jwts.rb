@@ -5,6 +5,6 @@ FactoryBot.define do
     jti { "MyString" }
     aud { "MyString" }
     exp { "2030-03-18 16:07:12" }
-    user { create(:user) }
+    user { association(:user) }
   end
 end
