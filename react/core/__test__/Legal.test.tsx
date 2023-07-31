@@ -1,11 +1,13 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 import { PrivacyPolicy } from '../legalPages/PrivacyPolicy';
 import { s4render } from '../../jest/testUtils';
 import { TermsOfUse } from '../legalPages/TermsOfUse';
+import { CookieConsent } from '../legalPages/CookieConsent';
+import { CookiesPolicy } from '../legalPages/CookiesPolicy';
 
-describe('Static Pages', () => {
+describe('Legal Pages', () => {
   describe('Privacy Policy Page', () => {
     it('Renders the privacy policy page', () => {
       s4render(<PrivacyPolicy />);
@@ -51,6 +53,47 @@ describe('Static Pages', () => {
         screen.getByText(/Modification of Terms of Use/)
       ).toBeInTheDocument();
       expect(screen.getByText(/Governing Law/)).toBeInTheDocument();
+    });
+  });
+
+  describe('Cookies Policy Page', () => {
+    it('Renders the terms of use page', () => {
+      s4render(<CookiesPolicy />);
+      const paragraph = screen.getByText(
+        /By using the Service, you consent to the use of cookies./i
+      );
+      expect(paragraph).toBeInTheDocument();
+    });
+
+    it('Renders cookies policy page with all the sections', () => {
+      s4render(<CookiesPolicy />);
+
+      expect(
+        screen.getByText(/To enable certain functions of the Service/)
+      ).toBeInTheDocument();
+      expect(screen.getByText(/To provide analytics/)).toBeInTheDocument();
+      expect(screen.getByText(/To store your preferences/)).toBeInTheDocument();
+      expect(
+        screen.getByText(/What are your choices regarding cookies?/)
+      ).toBeInTheDocument();
+    });
+  });
+
+  describe('CookieConsent', () => {
+    it('renders correctly with the paragraph', () => {
+      s4render(<CookieConsent />);
+      expect(
+        screen.getByText(
+          /This site uses services that use cookies to deliver better experience and analyze traffic./
+        )
+      ).toBeInTheDocument();
+    });
+
+    it('sets a cookie when accepted', () => {
+      s4render(<CookieConsent />);
+      expect(screen.getByText('Got it')).toBeInTheDocument();
+      screen.getByText('Got it').click();
+      expect(document.cookie).toMatch(/_sys4_cookies_accepted=accepted/);
     });
   });
 });
