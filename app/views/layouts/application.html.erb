@@ -11,6 +11,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reloa d" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module" %>
     <script src="/sw.js" defer="defer" ></script>
+    <%= render partial: "shared/window_objects" %>
   </head>
   <body class="bg-gradient-to-br from-black to-cyan-950 text-white">
     <%= yield %>
