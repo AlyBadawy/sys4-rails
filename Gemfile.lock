@@ -161,6 +161,7 @@ GEM
     has_scope (0.8.1)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
+    hashdiff (1.0.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     inherited_resources (1.13.1)
@@ -229,6 +230,9 @@ GEM
       childprocess (>= 0.6.3, < 5)
       iniparse (~> 1.4)
       rexml (~> 3.2)
+    paper_trail (14.0.0)
+      activerecord (>= 6.0)
+      request_store (~> 1.4)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
@@ -297,6 +301,8 @@ GEM
     regexp_parser (2.8.1)
     reline (0.3.6)
       io-console (~> 0.5)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -437,9 +443,11 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fasterer
+  hashdiff
   jbuilder
   jsbundling-rails
   overcommit
+  paper_trail
   pg (~> 1.1)
   pry-byebug
   pry-rails
