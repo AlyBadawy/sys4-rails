@@ -7,6 +7,7 @@ ruby "3.2.2"
 
 gem "rails", "~> 7.0.6"
 
+gem "activeadmin"
 gem "bootsnap", require: false
 gem "devise"
 gem "devise-jwt"
@@ -46,6 +47,7 @@ group :development do
   gem "rubocop-performance"
   gem "rubocop-rails"
   gem "rubocop-rspec"
+  gem "scss_lint"
   gem "web-console"
 end
 
