@@ -164,7 +164,9 @@ Metrics/BlockLength:
   Exclude:
     - config/routes.rb
     - config/seeds.rb
+    - db/schema.rb
     - app/admin/admins.rb
+    - app/admin/users.rb
 
 Metrics/ClassLength:
   Enabled: true
