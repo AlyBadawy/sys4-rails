@@ -10,6 +10,18 @@ module ApplicationHelper
     )
   end
 
+  def flippers_json(user)
+    JSON.generate(
+      Flipper.features.to_h do |feature|
+        if user
+          [feature.name, feature.enabled?(user)]
+        else
+          [feature.name, feature.enabled?]
+        end
+      end,
+    )
+  end
+
   def git_revision
     production_dir = "../../repo"
     message = ""

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < Account
+  include Flipper::Identifier
+
   include Devise::JWT::RevocationStrategies::Allowlist
 
   devise :database_authenticatable, :registerable,
