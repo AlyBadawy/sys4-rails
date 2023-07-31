@@ -167,6 +167,7 @@ Metrics/BlockLength:
     - db/schema.rb
     - app/admin/admins.rb
     - app/admin/users.rb
+    - app/admin/admins.rb
 
 Metrics/ClassLength:
   Enabled: true
