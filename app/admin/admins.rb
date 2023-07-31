@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
+
 ActiveAdmin.register Admin do
   menu priority: 1, parent: "Account"
 
@@ -53,4 +55,53 @@ ActiveAdmin.register Admin do
     end
     f.actions
   end
+
+  show do
+    attributes_table do
+      row :id
+      row :email
+      row :current_sign_in_at
+      row :current_sign_in_ip do |user|
+        if user.current_sign_in_ip
+          link_to user.current_sign_in_ip, "http://who.is/whois-ip/ip-address/#{user.current_sign_in_ip}", target: "_blank", rel: "noopener"
+        else
+          status_tag "no", label: "Never signed in before"
+        end
+      end
+      row :last_sign_in_at
+      row :last_sign_in_ip do |user|
+        if user.last_sign_in_ip
+          link_to user.last_sign_in_ip, "http://who.is/whois-ip/ip-address/#{user.last_sign_in_ip}", target: "_blank", rel: "noopener"
+        else
+          status_tag "no", label: "Never signed in before"
+        end
+      end
+      row :failed_attempts
+      row :created_at
+      row :updated_at
+    end
+    panel "User Versions" do
+      table_for admin.versions do
+        column :id
+        column :whodunnit_email do |v|
+          if v.whodunnit
+            Account.find_by(id: v.whodunnit)&.email || (status_tag "no", label: "Unknown")
+          else
+            status_tag "no", label: "Unknown"
+          end
+        end
+        column :whodunnit_type do |v|
+          if v.whodunnit
+            Account.find_by(id: v.whodunnit)&.type || (status_tag "no", label: "Unknown")
+          else
+            status_tag "no", label: "Unknown"
+          end
+        end
+        column :created_at
+        column :object_changes
+      end
+    end
+  end
 end
+
+# rubocop:enable Metrics/BlockLength
