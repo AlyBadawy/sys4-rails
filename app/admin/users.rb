@@ -100,9 +100,6 @@ ActiveAdmin.register User do
         column :created_at
         column :object_changes
         column :event
-        column "test" do |v|
-          current_admin.email
-        end
       end
     end
   end
