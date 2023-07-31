@@ -1,6 +1,6 @@
 import { createLogger } from 'redux-logger';
 import { Middleware } from '@reduxjs/toolkit';
-import { appApi } from './api/appApi';
+import { appApi } from './appApi';
 
 const middlewares: Middleware[] = [];
 

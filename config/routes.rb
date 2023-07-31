@@ -18,12 +18,15 @@ Rails.application.routes.draw do
                  passwords: "users/passwords",
                }
 
+    get "/status/ok", to: "status#ok"
+
     scope :account do
+      get "/me", to: "status#me"
       resources :allowlisted_jwts, only: %i[index show update destroy]
     end
   end
 
-  # root "react#index"
-  get "/app", to: "react#app"
-  get "*path", to: "react#index"
+  root "react#app"
+  # get "/app", to: "react#app"
+  get "*path", to: "react#app"
 end

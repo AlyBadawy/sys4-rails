@@ -5,11 +5,13 @@ import {
 } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { appApi } from './api/appApi';
+import { appApi } from './appApi';
 import { middlewares } from './middlewares';
+import { userReducer } from '../core/auth/UserSlice';
 
 export const rootReducer = combineReducers({
   [appApi.reducerPath]: appApi.reducer,
+  user: userReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
