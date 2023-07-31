@@ -85,20 +85,24 @@ ActiveAdmin.register User do
         column :id
         column :whodunnit_email do |v|
           if v.whodunnit
-            Account.find(v.whodunnit).email
+            Account.find_by(id: v.whodunnit)&.email || (status_tag "no", label: "Unknown")
           else
             status_tag "no", label: "Unknown"
           end
         end
         column :whodunnit_type do |v|
           if v.whodunnit
-            Account.find(v.whodunnit).type == "AdminUser" ? "Admin" : "User"
+            Account.find_by(id: v.whodunnit)&.type || (status_tag "no", label: "Unknown")
           else
             status_tag "no", label: "Unknown"
           end
         end
         column :created_at
         column :object_changes
+        column :event
+        column "test" do |v|
+          current_admin.email
+        end
       end
     end
   end

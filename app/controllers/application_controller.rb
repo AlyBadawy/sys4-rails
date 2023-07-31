@@ -2,11 +2,11 @@
 
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token, if: :json_request?
-  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def user_for_paper_trail
-    return current_admin_user.id if try(:current_admin_user)
+    return current_admin.id if try(:current_admin)
     return current_user.id if try(:current_user)
 
     "Unknown user"

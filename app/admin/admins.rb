@@ -81,18 +81,18 @@ ActiveAdmin.register Admin do
       row :updated_at
     end
     panel "User Versions" do
-      table_for admin_user.versions do
+      table_for admin.versions do
         column :id
         column :whodunnit_email do |v|
           if v.whodunnit
-            Account.find(v.whodunnit).email
+            Account.find_by(id: v.whodunnit)&.email || (status_tag "no", label: "Unknown")
           else
             status_tag "no", label: "Unknown"
           end
         end
         column :whodunnit_type do |v|
           if v.whodunnit
-            Account.find(v.whodunnit).type == "AdminUser" ? "Admin" : "User"
+            Account.find_by(id: v.whodunnit)&.type || (status_tag "no", label: "Unknown")
           else
             status_tag "no", label: "Unknown"
           end
