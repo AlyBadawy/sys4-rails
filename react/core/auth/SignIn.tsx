@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useAppDispatch } from '../../store/store';
-import { useLoginMutation } from './UserApi';
+import { useLoginMutation } from './AuthApi';
 import { setUser } from './UserSlice';
 import { AuthViewsForm } from './AuthViewsForm';
 import { PasswordField } from '../../ui/passwordField';

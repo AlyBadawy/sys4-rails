@@ -24,6 +24,10 @@ export const s4render = (
       }).concat(appApi.middleware),
   });
 
+  if (flippers) {
+    window.FLIPPERS = flippers;
+  }
+
   return render(
     <Provider store={store}>
       <BrowserRouter>
@@ -48,6 +52,10 @@ export const s4RenderWithoutRouter = (
         serializableCheck: false,
       }).concat(appApi.middleware),
   });
+
+  if (flippers) {
+    window.FLIPPERS = flippers;
+  }
 
   return render(<Provider store={store}>{ui}</Provider>);
 };

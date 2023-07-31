@@ -3,9 +3,9 @@ import { appApi } from '../../store/appApi';
 import { User } from '../../types/User';
 import { UserLoginData } from '../../types/UserLoginData';
 
-const apiWithTag = appApi.enhanceEndpoints({ addTagTypes: ['User'] });
+const apiWithTag = appApi.enhanceEndpoints({ addTagTypes: ['Auth'] });
 
-export const UserApi = apiWithTag.injectEndpoints({
+export const AuthApi = apiWithTag.injectEndpoints({
   endpoints: (builder) => ({
     register: builder.mutation<User, UserLoginData>({
       query: (credential: UserLoginData) => ({
@@ -13,7 +13,7 @@ export const UserApi = apiWithTag.injectEndpoints({
         method: 'POST',
         body: { user: { ...credential } },
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ['Auth'],
     }),
 
     login: builder.mutation<User, UserLoginData>({
@@ -22,7 +22,7 @@ export const UserApi = apiWithTag.injectEndpoints({
         method: 'POST',
         body: { user: { ...credential } },
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ['Auth'],
       transformResponse: (response: User, meta) => {
         return {
           ...response,
@@ -34,7 +34,7 @@ export const UserApi = apiWithTag.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           dispatch(
-            UserApi.util.updateQueryData('getUser', undefined, (draft) => {
+            AuthApi.util.updateQueryData('getUser', undefined, (draft) => {
               Object.assign(draft, data);
             })
           );
@@ -49,7 +49,7 @@ export const UserApi = apiWithTag.injectEndpoints({
         url: '/users/sign_out',
         method: 'DELETE',
       }),
-      invalidatesTags: ['User'],
+      invalidatesTags: ['Auth'],
     }),
 
     forgotPassword: builder.mutation<void, User>({
@@ -88,7 +88,7 @@ export const UserApi = apiWithTag.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           dispatch(
-            UserApi.util.updateQueryData('getUser', undefined, (draft) => {
+            AuthApi.util.updateQueryData('getUser', undefined, (draft) => {
               Object.assign(draft, data);
             })
           );
@@ -101,7 +101,7 @@ export const UserApi = apiWithTag.injectEndpoints({
     getUser: builder.query<User, void>({
       query: () => '/account/me',
       keepUnusedDataFor: 3600,
-      providesTags: ['User'],
+      providesTags: ['Auth'],
     }),
   }),
 });
@@ -114,4 +114,4 @@ export const {
   useResetPasswordMutation,
   useUpdateUserMutation,
   useGetUserQuery,
-} = UserApi;
+} = AuthApi;

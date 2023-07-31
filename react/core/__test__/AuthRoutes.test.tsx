@@ -1,11 +1,8 @@
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { screen } from '@testing-library/react';
 import React from 'react';
-import { s4RenderWithoutRouter } from '../testUtils';
-import {
-  OfflineRouterConfig,
-  OnlineRouterConfig,
-} from '../../core/RoutesConfig';
+import { s4RenderWithoutRouter } from '../../jest/testUtils';
+import { OfflineRouterConfig, OnlineRouterConfig } from '../RoutesConfig';
 
 describe('AuthRoutes', () => {
   describe('When the App online flipper is on', () => {

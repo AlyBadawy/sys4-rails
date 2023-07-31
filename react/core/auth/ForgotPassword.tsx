@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { AuthViewsForm } from './AuthViewsForm';
-import { useForgotPasswordMutation } from './UserApi';
+import { useForgotPasswordMutation } from './AuthApi';
 
 export const ForgotPassword = () => {
   const [email, setEmail] = useState('');

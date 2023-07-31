@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { AuthViewsForm } from './AuthViewsForm';
-import { useResetPasswordMutation } from './UserApi';
+import { useResetPasswordMutation } from './AuthApi';
 import { PasswordField } from '../../ui/passwordField';
 
 export const ResetPassword = () => {

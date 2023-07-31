@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthViewsForm } from './AuthViewsForm';
 import { toast } from 'react-toastify';
-import { useRegisterMutation } from './UserApi';
+import { useRegisterMutation } from './AuthApi';
 import { useFlipper } from '../../hooks/useFlipper';
 import { PasswordField } from '../../ui/passwordField';
 import { Sys4Text } from '../../ui/Sys4Text';

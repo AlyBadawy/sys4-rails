@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch } from '../../store/store';
-import { useLogoutMutation } from './UserApi';
+import { useLogoutMutation } from './AuthApi';
 import { unsetUser } from './UserSlice';
 
 export const LogOutButton = () => {

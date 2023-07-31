@@ -27,6 +27,5 @@ Rails.application.routes.draw do
   end
 
   root "react#app"
-  # get "/app", to: "react#app"
   get "*path", to: "react#app"
 end
