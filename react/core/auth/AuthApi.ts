@@ -1,0 +1,117 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+import { appApi } from '../../store/appApi';
+import { User } from '../../types/User';
+import { UserLoginData } from '../../types/UserLoginData';
+
+const apiWithTag = appApi.enhanceEndpoints({ addTagTypes: ['Auth'] });
+
+export const AuthApi = apiWithTag.injectEndpoints({
+  endpoints: (builder) => ({
+    register: builder.mutation<User, UserLoginData>({
+      query: (credential: UserLoginData) => ({
+        url: '/users/',
+        method: 'POST',
+        body: { user: { ...credential } },
+      }),
+      invalidatesTags: ['Auth'],
+    }),
+
+    login: builder.mutation<User, UserLoginData>({
+      query: (credential: UserLoginData) => ({
+        url: '/users/sign_in',
+        method: 'POST',
+        body: { user: { ...credential } },
+      }),
+      invalidatesTags: ['Auth'],
+      transformResponse: (response: User, meta) => {
+        return {
+          ...response,
+          jwtToken:
+            meta?.response?.headers.get('Authorization')?.split(' ')[1] || '',
+        };
+      },
+      async onQueryStarted(_user, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(
+            AuthApi.util.updateQueryData('getUser', undefined, (draft) => {
+              Object.assign(draft, data);
+            })
+          );
+        } catch (_error) {
+          // do nothing
+        }
+      },
+    }),
+
+    logout: builder.mutation<void, void>({
+      query: () => ({
+        url: '/users/sign_out',
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Auth'],
+    }),
+
+    forgotPassword: builder.mutation<void, User>({
+      query: ({ email }) => ({
+        url: '/users/password',
+        method: 'POST',
+        body: { user: { email } },
+      }),
+    }),
+
+    resetPassword: builder.mutation<void, UserLoginData>({
+      query: ({ password, resetPasswordToken }) => ({
+        url: '/users/password',
+        method: 'PUT',
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        body: { user: { password, reset_password_token: resetPasswordToken } },
+      }),
+    }),
+
+    updateUser: builder.mutation<User, User>({
+      query: (user) => ({
+        url: '/users/',
+        method: 'PUT',
+        body: {
+          user: {
+            email: user.email,
+            first_name: user.firstName,
+            last_name: user.lastName,
+            current_password: user.currentPassword,
+            password: user.password,
+            password_confirmation: user.passwordConfirmation,
+          },
+        },
+      }),
+      async onQueryStarted(_user, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(
+            AuthApi.util.updateQueryData('getUser', undefined, (draft) => {
+              Object.assign(draft, data);
+            })
+          );
+        } catch (_error) {
+          // do nothing
+        }
+      },
+    }),
+
+    getUser: builder.query<User, void>({
+      query: () => '/account/me',
+      keepUnusedDataFor: 3600,
+      providesTags: ['Auth'],
+    }),
+  }),
+});
+
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useLogoutMutation,
+  useForgotPasswordMutation,
+  useResetPasswordMutation,
+  useUpdateUserMutation,
+  useGetUserQuery,
+} = AuthApi;

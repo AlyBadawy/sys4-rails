@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
-import { useFlipper } from '../../hooks/useFlipper';
+import { useFlipper } from '../useFlipper';
 
-describe('App', () => {
+describe('useFlipper', () => {
   it('returns the correct value for window.FLIPPERS', () => {
     window.FLIPPERS = { feature1: true, feature2: false };
 

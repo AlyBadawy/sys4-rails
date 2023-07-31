@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import { RootState, rootReducer } from '../store/store';
 import { BrowserRouter } from 'react-router-dom';
-import { appApi } from '../store/api/appApi';
+import { appApi } from '../store/appApi';
 
 // As a basic setup, import your same slice reducers
 
@@ -23,6 +23,10 @@ export const s4render = (
         serializableCheck: false,
       }).concat(appApi.middleware),
   });
+
+  if (flippers) {
+    window.FLIPPERS = flippers;
+  }
 
   return render(
     <Provider store={store}>
@@ -48,6 +52,10 @@ export const s4RenderWithoutRouter = (
         serializableCheck: false,
       }).concat(appApi.middleware),
   });
+
+  if (flippers) {
+    window.FLIPPERS = flippers;
+  }
 
   return render(<Provider store={store}>{ui}</Provider>);
 };
